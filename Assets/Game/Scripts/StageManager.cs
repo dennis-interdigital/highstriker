@@ -7,10 +7,14 @@ namespace HighStriker
 {
     public class StageManager : MonoBehaviour
     {
+        public HammerController hammerController;
+        
         bool gameReady = false;
 
         void Start()
         {
+            hammerController.Init(this);
+
             gameReady = true;
         }
 
@@ -21,6 +25,7 @@ namespace HighStriker
                 float dt = Time.deltaTime;
 
                 //DoUpdate here
+                hammerController.DoUpdate(dt);
             }
         }
     }
