@@ -27,7 +27,6 @@ public class HighStrikerMachine : MonoBehaviour
         float score = isPerfectScore ? 1 : hitPower;
 
         float yPosition = Mathf.Lerp(yBulletMin, yBulletMax, score);
-        float moveDuration = 1f;
         Vector3 punchPos = new Vector3(0, yPosition, 0);
 
         Sequence seq = DOTween.Sequence();
