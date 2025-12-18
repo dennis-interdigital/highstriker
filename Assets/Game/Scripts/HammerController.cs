@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +9,7 @@ namespace HighStriker
         public float minChargeSpeed;
         public float maxChargeSpeed;
         public Slider sliderBar;
+        public Image imgbar;
 
         [Header("Runtime")]
         public float currentPower;
@@ -20,7 +19,7 @@ namespace HighStriker
         StageManager stageManager;
 
         public bool isPlaying;
-        
+
         public void Init(StageManager inStageManager)
         {
             stageManager = inStageManager;
@@ -36,6 +35,9 @@ namespace HighStriker
                 currentPower = powerCurve.Evaluate(t);
 
                 sliderBar.value = currentPower;
+                
+                
+
             }
         }
 
@@ -48,6 +50,18 @@ namespace HighStriker
             else if (!isPlaying && Input.GetMouseButtonDown(0))
             {
                 StartCharge();
+            }
+
+            if (isPlaying)
+            {
+                if (currentPower < 0.5f)
+                {
+                    imgbar.color = Color.Lerp(Color.red, Color.yellow, currentPower / 0.5f);
+                }
+                else
+                {
+                    imgbar.color = Color.Lerp(Color.yellow, Color.green, (currentPower - 0.5f) / 0.5f);
+                }
             }
         }
 
@@ -63,6 +77,14 @@ namespace HighStriker
         public void Hit()
         {
             isPlaying = false;
+
+            bool isPerfectScore = currentPower >= stageManager.perfectScoreTreshold;
+
+            if (isPerfectScore)
+            {
+                currentPower = 1f;
+                sliderBar.value = 1f;
+            }
 
             stageManager.highStrikerMachine.AnimateHit(currentPower);
 

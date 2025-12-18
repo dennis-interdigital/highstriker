@@ -22,7 +22,11 @@ public class HighStrikerMachine : MonoBehaviour
 
     public void AnimateHit(float hitPower)
     {
-        float yPosition = Mathf.Lerp(yBulletMin, yBulletMax, hitPower);
+        bool isPerfectScore = hitPower >= stageManager.perfectScoreTreshold;
+
+        float score = isPerfectScore ? 1 : hitPower;
+
+        float yPosition = Mathf.Lerp(yBulletMin, yBulletMax, score);
         float moveDuration = 1f;
         Vector3 punchPos = new Vector3(0, yPosition, 0);
 
@@ -32,10 +36,7 @@ public class HighStrikerMachine : MonoBehaviour
         Tween tweenShakeBell = null;
         Tween tweenMoveDown = rootBullet.DOMoveY(yBulletMin, hitPower).SetEase(Ease.InCubic);
 
-
         seq.Append(tweenMoveUp);
-
-        bool isPerfectScore = hitPower >= stageManager.perfectScore;
 
         if (isPerfectScore)
         {
@@ -48,8 +49,6 @@ public class HighStrikerMachine : MonoBehaviour
         else
         {
             seq.Append(tweenMoveDown);
-        }
-
-        
+        }   
     }
 }

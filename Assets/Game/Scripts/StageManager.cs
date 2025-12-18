@@ -11,7 +11,7 @@ namespace HighStriker
         public HighStrikerMachine highStrikerMachine;
 
         [Header("Config")]
-        public float perfectScore;
+        public float perfectScoreTreshold;
 
         bool gameReady = false;
 
