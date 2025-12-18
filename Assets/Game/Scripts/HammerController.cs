@@ -24,6 +24,7 @@ namespace HighStriker
         public void Init(StageManager inStageManager)
         {
             stageManager = inStageManager;
+            isPlaying = false;
         }
 
         public void DoUpdate(float dt)
@@ -52,6 +53,7 @@ namespace HighStriker
 
         public void StartCharge()
         {
+            currentPower = 0;
             chargeTime = 0;
             currChargeSpeed = Random.Range(minChargeSpeed, maxChargeSpeed);
 

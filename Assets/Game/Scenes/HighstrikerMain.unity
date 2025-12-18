@@ -217,8 +217,8 @@ MonoBehaviour:
     m_PreInfinity: 1
     m_PostInfinity: 1
     m_RotationOrder: 4
-  minChargeSpeed: 1
-  maxChargeSpeed: 2
+  minChargeSpeed: 0.8
+  maxChargeSpeed: 1.5
   sliderBar: {fileID: 1086645127}
   currentPower: 0.08866386
   currChargeSpeed: 1.1150588
