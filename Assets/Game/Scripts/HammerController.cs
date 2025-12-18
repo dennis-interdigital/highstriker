@@ -61,6 +61,9 @@ namespace HighStriker
         public void Hit()
         {
             isPlaying = false;
+
+            stageManager.highStrikerMachine.AnimateHit(currentPower);
+
             Debug.Log($"Power: {currentPower}");
         }
     }

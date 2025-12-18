@@ -8,12 +8,17 @@ namespace HighStriker
     public class StageManager : MonoBehaviour
     {
         public HammerController hammerController;
-        
+        public HighStrikerMachine highStrikerMachine;
+
+        [Header("Config")]
+        public float perfectScore;
+
         bool gameReady = false;
 
         void Start()
         {
             hammerController.Init(this);
+            highStrikerMachine.Init(this);
 
             gameReady = true;
         }
