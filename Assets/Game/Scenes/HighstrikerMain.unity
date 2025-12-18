@@ -2404,6 +2404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hammerController: {fileID: 57691597}
   highStrikerMachine: {fileID: 146395292}
+  uiManager: {fileID: 145930087}
   perfectScoreTreshold: 0.95
 --- !u!4 &2075812967
 Transform:

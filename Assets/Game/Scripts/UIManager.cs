@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+namespace HighStriker
 {
-    // Start is called before the first frame update
-    void Start()
+    public class UIManager : MonoBehaviour
     {
-        
-    }
+        StageManager stageManager;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void Init(StageManager inStageManager)
+        {
+            stageManager = inStageManager;
+        }
     }
 }
+

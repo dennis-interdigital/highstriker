@@ -9,6 +9,7 @@ namespace HighStriker
     {
         public HammerController hammerController;
         public HighStrikerMachine highStrikerMachine;
+        public UIManager uiManager;
 
         [Header("Config")]
         public float perfectScoreTreshold;
@@ -19,6 +20,7 @@ namespace HighStriker
         {
             hammerController.Init(this);
             highStrikerMachine.Init(this);
+            uiManager.Init(this);
 
             gameReady = true;
         }
