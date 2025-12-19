@@ -16,8 +16,6 @@ public class HighStrikerMachine : MonoBehaviour
     public void Init(StageManager inStageManager)
     {
         stageManager = inStageManager;
-
-
     }
 
     public void AnimateHit(float hitPower)
@@ -48,6 +46,14 @@ public class HighStrikerMachine : MonoBehaviour
         else
         {
             seq.Append(tweenMoveDown);
-        }   
+        }
+
+        seq.AppendInterval(0.5f);
+        seq.AppendCallback(ShowResult);
+    }
+
+    void ShowResult()
+    {
+        stageManager.uiManager.ShowPopup(PopupState.Result);
     }
 }

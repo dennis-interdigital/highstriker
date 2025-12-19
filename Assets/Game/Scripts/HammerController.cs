@@ -8,8 +8,6 @@ namespace HighStriker
         public AnimationCurve powerCurve;
         public float minChargeSpeed;
         public float maxChargeSpeed;
-        public Slider sliderBar;
-        public Image imgbar;
 
         [Header("Runtime")]
         public float currentPower;
@@ -33,11 +31,6 @@ namespace HighStriker
                 chargeTime += dt * currChargeSpeed;
                 float t = chargeTime % 1f;
                 currentPower = powerCurve.Evaluate(t);
-
-                sliderBar.value = currentPower;
-                
-                
-
             }
         }
 
@@ -46,22 +39,6 @@ namespace HighStriker
             if (isPlaying && Input.GetMouseButtonDown(0))
             {
                 Hit();
-            }
-            else if (!isPlaying && Input.GetMouseButtonDown(0))
-            {
-                StartCharge();
-            }
-
-            if (isPlaying)
-            {
-                if (currentPower < 0.5f)
-                {
-                    imgbar.color = Color.Lerp(Color.red, Color.yellow, currentPower / 0.5f);
-                }
-                else
-                {
-                    imgbar.color = Color.Lerp(Color.yellow, Color.green, (currentPower - 0.5f) / 0.5f);
-                }
             }
         }
 
@@ -83,7 +60,8 @@ namespace HighStriker
             if (isPerfectScore)
             {
                 currentPower = 1f;
-                sliderBar.value = 1f;
+                GameplayUI gameplayUI = stageManager.uiManager.currActiveUI as GameplayUI;
+                gameplayUI.RefreshSliderHitBar(1f);
             }
 
             stageManager.highStrikerMachine.AnimateHit(currentPower);

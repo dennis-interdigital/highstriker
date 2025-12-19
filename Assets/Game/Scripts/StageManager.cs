@@ -1,8 +1,5 @@
 using UnityEngine;
 
-//READ ME: Edit using:
-//VS: ctrl+r, ctrl+r
-//Rider: Shift+F6
 namespace HighStriker 
 {
     public class StageManager : MonoBehaviour
@@ -23,6 +20,8 @@ namespace HighStriker
             uiManager.Init(this);
 
             gameReady = true;
+
+            uiManager.ShowUI(UIState.Title);
         }
 
         void FixedUpdate()
@@ -33,6 +32,8 @@ namespace HighStriker
 
                 //DoUpdate here
                 hammerController.DoUpdate(dt);
+
+                uiManager.DoUpdate(dt);
             }
         }
     }
