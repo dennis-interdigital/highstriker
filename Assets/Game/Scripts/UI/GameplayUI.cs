@@ -1,3 +1,4 @@
+using UnityEditor.ProjectWindowCallback;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ namespace HighStriker
     {
         [SerializeField] Slider sliderBar;
         [SerializeField] Image imgBar;
+        [SerializeField] ButtonHitListener buttonHitListener;
 
         HammerController hammerController;
 
@@ -16,6 +18,8 @@ namespace HighStriker
         {
             base.Init(inStageManager);
             hammerController = stageManager.hammerController;
+
+            buttonHitListener.Init(this);
 
             colorFactor = 0.5f;
         }
@@ -48,6 +52,17 @@ namespace HighStriker
                     imgBar.color = Color.Lerp(Color.yellow, Color.green, value);
                 }
             }
+        }
+
+        public void SetButtonHit(bool enable)
+        {
+            buttonHitListener.gameObject.SetActive(enable);
+        }
+
+        public void Hit()
+        {
+            hammerController.Hit();
+            SetButtonHit(false);
         }
     }
 }

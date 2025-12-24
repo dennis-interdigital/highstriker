@@ -34,19 +34,22 @@ namespace HighStriker
             }
         }
 
-        void Update()
-        {
-            if (isPlaying && Input.GetMouseButtonDown(0))
-            {
-                Hit();
-            }
-        }
+        //void Update()
+        //{
+        //    if (isPlaying && Input.GetMouseButtonDown(0))
+        //    {
+        //        Hit();
+        //    }
+        //}
 
         public void StartCharge()
         {
             currentPower = 0;
             chargeTime = 0;
             currChargeSpeed = Random.Range(minChargeSpeed, maxChargeSpeed);
+
+            GameplayUI gameplayUI = stageManager.uiManager.currActiveUI as GameplayUI;
+            gameplayUI.SetButtonHit(true);
 
             isPlaying = true;
         }
